@@ -6,7 +6,7 @@ public class DBConnector {
 
     String url = "jdbc:mysql://localhost:3300/bobfi";
     String username = "root";
-    String password = "Magni064fg$";
+    String password = "your-password";
     Connection con;
     Statement statement;
     ResultSet result;
