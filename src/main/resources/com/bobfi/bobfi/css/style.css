@@ -1,0 +1,38 @@
+.button:hover {
+    -fx-background-color: #3DC3CE;
+    -fx-cursor: hand;
+}
+.button{
+    -fx-background-color: #46949A;
+}
+.password-field{
+    -fx-background-color: none;
+    -fx-border-color: #C8C8C8;
+    -fx-border-radius: 1;
+}
+.password-field:focused{
+    -fx-border-color: #46949a;
+}
+.text-field{
+    -fx-background-color: none;
+    -fx-border-color: #C8C8C8;
+    -fx-border-radius: 1;
+    -fx-focus-traversable: false;
+}
+.text-field:focused{
+    -fx-border-color: #46949a;
+}
+.text-field:selected{
+    -fx-display-caret: true;
+}
+
+.rectangle:hover{
+    -fx-cursor: hand;
+    -fx-stroke: #46949a;
+}
+
+.image-view:hover{
+    -fx-cursor: hand;
+}
+
+
