@@ -1,5 +1,6 @@
 package com.bobfi.bobfi.controller;
 
+import com.bobfi.bobfi.User;
 import com.bobfi.bobfi.db.DBConnector;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -27,11 +29,13 @@ public class Welcome implements Initializable {
     @FXML
     private Label errorMsgPwLogin;
     @FXML
-    private Label errorMsgUsername;
+    private Label errorMsgFullName;
     @FXML
     private Label errorMsgPwSignup;
     @FXML
     private Label errorMsgEmailSignup;
+    @FXML
+    private Label incorrect;
 
     //InputBox
     @FXML
@@ -41,7 +45,7 @@ public class Welcome implements Initializable {
     @FXML
     private PasswordField pwFieldLogin;
     @FXML
-    private TextField usernameField;
+    private TextField fullnameField;
     @FXML
     private TextField pwFieldSignup;
 
@@ -80,10 +84,10 @@ public class Welcome implements Initializable {
 
         //Testing
         /*emailFieldLogin.setText("test@gmail.com");
-        pwFieldLogin.setText("1234");
+        pwFieldLogin.setText("1234");*/
 
-        emailFieldSignup.setText("samiekeyz02@gmail.com");
-        usernameField.setText("samiekeyx");
+        /*emailFieldSignup.setText("samiekeyz02@gmail.com");
+        fullnameField.setText("samiekeyx");
         pwFieldSignup.setText("12345678");*/
 
         setVisibility();
@@ -111,12 +115,13 @@ public class Welcome implements Initializable {
         errorMsgEmailLogin.setVisible(false);
         errorMsgPwLogin.setVisible(false);
         errorMsgEmailSignup.setVisible(false);
-        errorMsgUsername.setVisible(false);
+        errorMsgFullName.setVisible(false);
         errorMsgPwSignup.setVisible(false);
+        incorrect.setVisible(false);
 
         pwFieldSignup.setFocusTraversable(false);
         pwFieldLogin.setFocusTraversable(false);
-        usernameField.setFocusTraversable(false);
+        fullnameField.setFocusTraversable(false);
         emailFieldSignup.setFocusTraversable(false);
         emailFieldLogin.setFocusTraversable(false);
 
@@ -128,7 +133,7 @@ public class Welcome implements Initializable {
             createAccForm.setVisible(true);
 
             pwFieldSignup.setStyle("-fx-border-color: #C8C8C8;");
-            usernameField.setStyle("-fx-border-color: #C8C8C8;");
+            fullnameField.setStyle("-fx-border-color: #C8C8C8;");
             emailFieldSignup.setStyle("-fx-border-color: #C8C8C8;");
             setVisibility();
             count = 0;
@@ -149,7 +154,7 @@ public class Welcome implements Initializable {
 
         emailFieldLogin.setOnMouseClicked(e->{
             count++;
-            if (count > 1 && isEmpty(pwFieldLogin, errorMsgPwLogin));
+            if (count > 2 && isEmpty(pwFieldLogin, errorMsgPwLogin));
 
             if (!isEmpty(pwFieldLogin) )
                 fieldChangeMode(pwFieldLogin, "-fx-border-color: #C8C8C8;", errorMsgPwLogin);
@@ -172,19 +177,19 @@ public class Welcome implements Initializable {
     private void signupSection(){
         emailFieldSignup.setOnMouseClicked(e->{
             if (count>=1 && isEmpty(pwFieldSignup, errorMsgPwSignup));
-            if (count>=1 && isEmpty(usernameField, errorMsgUsername));
+            if (count>=1 && isEmpty(fullnameField, errorMsgFullName));
 
             if (!isEmpty(pwFieldSignup))
                 fieldChangeMode(pwFieldSignup, "-fx-border-color: #C8C8C8;", errorMsgPwSignup);
 
-            if (!isEmpty(usernameField))
-                fieldChangeMode(usernameField, "-fx-border-color: #C8C8C8;", errorMsgUsername);
+            if (!isEmpty(fullnameField))
+                fieldChangeMode(fullnameField, "-fx-border-color: #C8C8C8;", errorMsgFullName);
 
             if (isEmpty(emailFieldSignup)) {
                 fieldChangeMode(emailFieldSignup, "-fx-border-color: #46949a;", errorMsgEmailSignup);
             }
         });
-        usernameField.setOnMouseClicked(e->{
+        fullnameField.setOnMouseClicked(e->{
             count++;
             if (isEmpty(emailFieldSignup, errorMsgEmailSignup));
             if (count>2 && isEmpty(pwFieldSignup, errorMsgPwSignup));
@@ -196,19 +201,19 @@ public class Welcome implements Initializable {
                 fieldChangeMode(emailFieldSignup, "-fx-border-color: #C8C8C8;", errorMsgEmailSignup);
 
 
-            if (isEmpty(usernameField)) {
-                fieldChangeMode(usernameField, "-fx-border-color: #46949a;", errorMsgUsername);
+            if (isEmpty(fullnameField)) {
+                fieldChangeMode(fullnameField, "-fx-border-color: #46949a;", errorMsgFullName);
             }
         });
         pwFieldSignup.setOnMouseClicked(e->{
             if (isEmpty(emailFieldSignup, errorMsgEmailSignup));
-            if (isEmpty(usernameField, errorMsgUsername));
+            if (isEmpty(fullnameField, errorMsgFullName));
 
             if (!isEmpty(emailFieldSignup))
                 fieldChangeMode(emailFieldSignup, "-fx-border-color: #C8C8C8;", errorMsgEmailSignup);
 
-            if (!isEmpty(usernameField))
-                fieldChangeMode(usernameField, "-fx-border-color: #C8C8C8;", errorMsgUsername);
+            if (!isEmpty(fullnameField))
+                fieldChangeMode(fullnameField, "-fx-border-color: #C8C8C8;", errorMsgFullName);
 
             if (isEmpty(pwFieldSignup)) {
                 fieldChangeMode(pwFieldSignup, "-fx-border-color: #46949a;", errorMsgPwSignup);
@@ -220,9 +225,26 @@ public class Welcome implements Initializable {
         loginBtn.setOnAction(e->{
             if(validateLoginBtn()) {
                 try{
-                    boolean result = dbConnector.read("SELECT email FROM users WHERE email = '" + emailFieldLogin.getText() + "'");
-                    if (result){
-                       setScene("fxml/dashboard.fxml");
+                    String query = "SELECT count(1) FROM users WHERE email = '" + emailFieldLogin.getText() +
+                            "' AND password = '" + pwFieldLogin.getText() + "'" ;
+                    boolean result = dbConnector.read(query);
+
+                    int id = dbConnector.findUser(emailFieldLogin.getText());
+                    ResultSet resultSet = null;
+
+                    if (result && id!=0){
+                        resultSet = dbConnector.getUser(id);
+                        while (resultSet.next()){
+                            BobfiApp.user = new User(resultSet.getInt(2),
+                                    resultSet.getString(3),
+                                    resultSet.getString(4),
+                                    resultSet.getString(5));
+                        }
+                        clearField();
+                        setScene("fxml/dashboard.fxml");
+                    }
+                    else{
+                        incorrect.setVisible(true);
                     }
                 } catch (Exception ex) {
                     throw new RuntimeException(ex);
@@ -232,13 +254,14 @@ public class Welcome implements Initializable {
         createBtn.setOnAction(e->{
             if(validateCreateBtn()){
                 try {
-                    String query = "INSERT INTO users(user_id, username, email, password) " +
+                    String query = "INSERT INTO users(user_id, fullname, email, password) " +
                             "VALUES(" + generateId()
-                            +", '"+ usernameField.getText() +"', "
+                            +", '"+ fullnameField.getText() +"', "
                             +"'"+ emailFieldSignup.getText() + "', "
                             +"'"+ pwFieldSignup.getText() +"'" + ")";
                     boolean result = dbConnector.write(query);
                     if (result){
+                        clearField();
                         createAccForm.setVisible(false);
                         loginAccForm.setVisible(true);
                     }
@@ -310,8 +333,8 @@ public class Welcome implements Initializable {
             fieldChangeMode(pwFieldSignup, "-fx-border-color: #C8C8C8;", errorMsgPwSignup);
         }
 
-        if (!isEmpty(usernameField,errorMsgUsername)){
-            fieldChangeMode(usernameField, "-fx-border-color: #C8C8C8;", errorMsgUsername);
+        if (!isEmpty(fullnameField,errorMsgFullName)){
+            fieldChangeMode(fullnameField, "-fx-border-color: #C8C8C8;", errorMsgFullName);
         }
         if (checkBox.isVisible()){
             checkBox.setStyle("-fx-stroke: RED");
@@ -320,7 +343,19 @@ public class Welcome implements Initializable {
             checkBox.setStyle("-fx-stroke: #C8C8C8;");
         }
 
-        return !isEmpty(emailFieldSignup, errorMsgEmailSignup) && !isEmpty(pwFieldSignup,errorMsgPwSignup) && !isEmpty(usernameField,errorMsgUsername) && !checkBox.isVisible();
+        return !isEmpty(emailFieldSignup, errorMsgEmailSignup) &&
+                !isEmpty(pwFieldSignup,errorMsgPwSignup) &&
+                !isEmpty(fullnameField,errorMsgFullName) &&
+                !checkBox.isVisible() &&
+                emailValidation(emailFieldSignup.getText());
+    }
+
+    public void clearField(){
+        emailFieldLogin.setText("");
+        pwFieldLogin.setText("");
+        emailFieldSignup.setText("");
+        fullnameField.setText("");
+        pwFieldSignup.setText("");
     }
 
     public void setScene(String fxml) throws IOException {

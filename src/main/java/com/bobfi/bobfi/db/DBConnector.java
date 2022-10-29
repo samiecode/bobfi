@@ -29,7 +29,27 @@ public class DBConnector {
 
     public boolean read(String query) throws SQLException {
         result = statement.executeQuery(query);
-        return result.next();
+        while (result.next()){
+            if (result.getInt(1) == 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public ResultSet getUser(int id) throws SQLException {
+        String query = "SELECT * FROM users WHERE user_id = " + id + "";
+        result = statement.executeQuery(query);
+        return result;
+    }
+
+    public int findUser(String email) throws SQLException {
+        String query = "SELECT user_id FROM users WHERE email = '" + email + "'";
+        result = statement.executeQuery(query);
+        if (result.next()){
+            return result.getInt(1);
+        }
+        return 0;
     }
 
 }

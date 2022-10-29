@@ -42,18 +42,18 @@
                   <!--Email field-end-->
 
                   <!--Username field-->
-                  <Label layoutX="21.0" layoutY="107.0" prefHeight="17.0" prefWidth="59.0" text="Username" textFill="#10363a">
+                  <Label layoutX="21.0" layoutY="107.0" prefHeight="17.0" prefWidth="59.0" text="Full Name" textFill="#10363a">
                      <font>
                         <Font name="Segoe UI" size="10.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="usernameField" layoutX="21.0" layoutY="122.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your username" />
-                  <Label fx:id="errorMsgUsername" layoutX="22.0" layoutY="151.0" prefHeight="17.0" prefWidth="112.0" text="Please enter your username" textFill="#f20000">
+                  <TextField fx:id="fullnameField" layoutX="21.0" layoutY="122.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your full name (surname first)" />
+                  <Label fx:id="errorMsgFullName" layoutX="22.0" layoutY="151.0" prefHeight="17.0" prefWidth="112.0" text="Please enter your full name" textFill="#f20000">
                      <font>
                         <Font name="Segoe UI" size="8.0" />
                      </font>
                   </Label>
-                  <!--Username-field-end-->
+                  <!--Full Name-field-end-->
 
                   <!--Password Field-->
                   <Label layoutX="21.0" layoutY="162.0" prefHeight="17.0" prefWidth="53.0" text="Password" textFill="#10363a">
@@ -101,14 +101,14 @@
                      </cursor>
                   </Label>
 
-                  <ImageView visible="false" fx:id="showPassword" fitHeight="18.0" fitWidth="11.0" layoutX="270.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="showPassword" fitHeight="18.0" fitWidth="11.0" layoutX="270.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../images/eye-crossed.png" />
+                        <Image url="@../images/welcome-icon/eye-crossed.png" />
                      </image>
                   </ImageView>
                   <ImageView fx:id="checkBoxMark" fitHeight="18.0" fitWidth="11.0" layoutX="21.0" layoutY="228.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../images/checkbox-mark.png" />
+                        <Image url="@../images/welcome-icon/checkbox-mark.png" />
                      </image>
                   </ImageView>
                   <Rectangle fx:id="checkBox" arcHeight="5.0" arcWidth="5.0" fill="#ffffff" height="9.5" layoutX="22.0" layoutY="229.0" stroke="#c8c8c8" strokeWidth="0.8" width="9.5">
@@ -120,7 +120,7 @@
 
             <ImageView fitHeight="84.0" fitWidth="128.0" layoutX="281.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/Bobfi.png" />
+                  <Image url="@../images/bobfi-icon/Bobfi.png" />
                </image>
             </ImageView>
 
@@ -132,29 +132,29 @@
                         <Font name="Segoe UI Bold" size="16.0" />
                      </font>
                   </Label>
-                  <Label layoutX="21.0" layoutY="52.0" prefHeight="17.0" prefWidth="26.0" text="Email" textFill="#10363a">
+                  <Label layoutX="21.0" layoutY="56.0" prefHeight="17.0" prefWidth="26.0" text="Email" textFill="#10363a">
                      <font>
                         <Font name="Segoe UI" size="10.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="emailFieldLogin" layoutX="21.0" layoutY="67.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your email" />
-                  <Label fx:id="errorMsgEmailLogin" layoutX="22.0" layoutY="96.0" prefHeight="17.0" prefWidth="112.0" text="Please enter your email" textFill="#f20000">
+                  <TextField fx:id="emailFieldLogin" layoutX="21.0" layoutY="71.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your email" />
+                  <Label fx:id="errorMsgEmailLogin" layoutX="22.0" layoutY="100.0" prefHeight="17.0" prefWidth="112.0" text="Please enter your email" textFill="#f20000">
                      <font>
                         <Font name="Segoe UI" size="8.0" />
                      </font>
                   </Label>
-                  <Label layoutX="21.0" layoutY="107.0" prefHeight="17.0" prefWidth="53.0" text="Password" textFill="#10363a">
+                  <Label layoutX="21.0" layoutY="111.0" prefHeight="17.0" prefWidth="53.0" text="Password" textFill="#10363a">
                      <font>
                         <Font name="Segoe UI" size="10.0" />
                      </font>
                   </Label>
-                  <PasswordField fx:id="pwFieldLogin" layoutX="21.0" layoutY="122.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your password" stylesheets="@../css/style.css" />
-                  <Label fx:id="errorMsgPwLogin" layoutX="21.0" layoutY="153.0" prefHeight="17.0" prefWidth="121.0" text="Please enter your password" textFill="#f20000">
+                  <PasswordField fx:id="pwFieldLogin" layoutX="21.0" layoutY="126.0" prefHeight="31.0" prefWidth="267.0" promptText="Enter your password" stylesheets="@../css/style.css" />
+                  <Label fx:id="errorMsgPwLogin" layoutX="21.0" layoutY="157.0" prefHeight="17.0" prefWidth="121.0" text="Please enter your password" textFill="#f20000">
                      <font>
                         <Font name="Segoe UI" size="8.0" />
                      </font>
                   </Label>
-                  <Button fx:id="loginBtn" layoutX="21.0" layoutY="177.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" stylesheets="@../css/style.css" text="Login" textFill="WHITE">
+                  <Button fx:id="loginBtn" layoutX="21.0" layoutY="181.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="267.0" stylesheets="@../css/style.css" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI Bold" size="12.0" />
                      </font>
@@ -162,12 +162,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Label layoutX="98.0" layoutY="221.0" text="Not registered?" textFill="#454545">
+                  <Label layoutX="98.0" layoutY="225.0" text="Not registered?" textFill="#454545">
                      <font>
                         <Font size="10.0" />
                      </font>
                   </Label>
-                  <Label fx:id="signupLink" layoutX="166.0" layoutY="221.0" prefHeight="15.0" prefWidth="43.0" text=" Sign up" textFill="#46949a">
+                  <Label fx:id="signupLink" layoutX="166.0" layoutY="225.0" prefHeight="15.0" prefWidth="43.0" text=" Sign up" textFill="#46949a">
                      <font>
                         <Font size="10.0" />
                      </font>
@@ -175,11 +175,16 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Label>
-                  <ImageView visible="false" fx:id="showPasswordLogin" fitHeight="18.0" fitWidth="11.0" layoutX="270.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="showPasswordLogin" fitHeight="18.0" fitWidth="11.0" layoutX="270.0" layoutY="132.0" pickOnBounds="true" preserveRatio="true" visible="false">
                      <image>
-                        <Image url="@../images/eye-crossed.png" />
+                        <Image url="@../images/welcome-icon/eye-crossed.png" />
                      </image>
                   </ImageView>
+                  <Label fx:id="incorrect" layoutX="92.0" layoutY="43.0" prefHeight="17.0" prefWidth="125.0" text="Incorrect email or password" textFill="#f20000">
+                     <font>
+                        <Font name="Segoe UI" size="10.0" />
+                     </font>
+                  </Label>
                </children>
             </Group>
          </children>

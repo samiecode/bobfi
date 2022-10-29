@@ -3,6 +3,7 @@ module com.bobfi.bobfi {
     requires javafx.fxml;
     requires java.sql;
     requires commons.validator;
+    requires mysql.connector.java;
 
 
     opens com.bobfi.bobfi to javafx.fxml;

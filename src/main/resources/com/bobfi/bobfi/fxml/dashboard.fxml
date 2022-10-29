@@ -1,11 +1,318 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
 
-
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="606.0" prefWidth="1214.0" style="-fx-background-color: #EEF7F6;" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="648.0" prefWidth="1207.0" style="-fx-background-color: #EEF7F6;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bobfi.bobfi.controller.Dashboard">
    <left>
-      <Pane prefHeight="606.0" prefWidth="294.0" style="-fx-background-color: #46949a;" BorderPane.alignment="CENTER" />
+      <AnchorPane prefHeight="648.0" prefWidth="282.0" style="-fx-background-color: #46949a;" BorderPane.alignment="CENTER">
+         <children>
+            <VBox fx:id="vbox" alignment="CENTER" layoutX="41.0" layoutY="100.0" prefHeight="177.0" prefWidth="244.0" stylesheets="@../css/style.css">
+               <children>
+                  <HBox fx:id="hbox1" alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="274.0" spacing="7.0" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/dashboard.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Dasbboard" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                     <styleClass>
+                        <String fx:value="hbox" />
+                        <String fx:value="active" />
+                     </styleClass>
+                  </HBox>
+                  <HBox fx:id="hbox2" alignment="CENTER_LEFT" layoutX="10.0" layoutY="115.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="19.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/list-check.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="My Tasks" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hbox3" alignment="CENTER_LEFT" layoutX="10.0" layoutY="136.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/folder-management.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="My Projects" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hbox4" alignment="CENTER_LEFT" layoutX="10.0" layoutY="157.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/messenger.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="My Messages" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hbox5" alignment="CENTER_LEFT" layoutX="10.0" layoutY="178.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/client-profile.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Clients" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hbox6" alignment="CENTER_LEFT" layoutX="10.0" layoutY="199.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <ImageView fitHeight="19.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/dashboard-icon/customer.png" />
+                           </image>
+                        </ImageView>
+                        <Label text="Teams" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <ImageView fitHeight="44.0" fitWidth="141.0" layoutX="44.0" layoutY="30.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/bobfi-icon/bobfi-on-text.png" />
+               </image>
+            </ImageView>
+            <Line endX="202.33334350585938" layoutX="81.0" layoutY="331.0" startX="-100.0" stroke="#f6f6f6" />
+            <Button fx:id="logoutBtn" alignment="CENTER" layoutX="81.0" layoutY="577.0" mnemonicParsing="false" onAction="#onAction" prefHeight="33.0" prefWidth="104.0" text="Logout">
+               <font>
+                  <Font name="Segoe UI Bold" size="14.0" />
+               </font>
+            </Button>
+            <VBox alignment="CENTER" layoutX="67.0" layoutY="336.0" prefHeight="69.0" prefWidth="217.0">
+               <children>
+                  <HBox fx:id="hbox7" alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <Label text="Categories" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+                  <HBox fx:id="hbox8" alignment="CENTER_LEFT" layoutX="10.0" layoutY="20.0" prefHeight="42.0" prefWidth="274.0" spacing="7.0" styleClass="hbox" stylesheets="@../css/style.css">
+                     <children>
+                        <Label text="Setting" textFill="WHITE">
+                           <font>
+                              <Font name="Segoe UI Semibold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="7.0" left="10.0" right="10.0" top="7.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </left>
+   <right>
+      <ScrollPane fx:id="scrollPane" prefHeight="648.0" prefWidth="993.0" style="-fx-background-color: #EEF7F6;" stylesheets="@../css/style.css" BorderPane.alignment="CENTER">
+         <content>
+            <AnchorPane minWidth="-Infinity" prefHeight="777.0" prefWidth="975.0" style="-fx-background-color: #EEF7F6;">
+               <children>
+                  <AnchorPane fx:id="dashboard" minWidth="-Infinity" prefHeight="777.0" prefWidth="975.0" style="-fx-background-color: #EEF7F6;">
+                     <children>
+                        <Pane layoutX="56.0" layoutY="98.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="106.0" prefWidth="815.0" style="-fx-background-color: #58B9C0; -fx-background-radius: 10;">
+                           <children>
+                              <Label fx:id="greeting" layoutX="41.0" layoutY="25.0" prefHeight="37.0" prefWidth="134.0" text="Hi Samie" textFill="WHITE">
+                                 <font>
+                                    <Font name="Segoe UI Bold" size="24.0" />
+                                 </font>
+                              </Label>
+                              <Label layoutX="41.0" layoutY="46.0" prefHeight="37.0" prefWidth="805.0" text="You have completed two of your goals this week, one more to go!" textFill="WHITE">
+                                 <font>
+                                    <Font name="Segoe UI Semibold" size="16.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <GridPane hgap="17.0" layoutX="56.0" layoutY="262.0" prefHeight="106.0" prefWidth="809.0" style="-fx-background-radius: 10;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane fx:id="pane1" prefHeight="100.0" prefWidth="396.0" styleClass="pane" stylesheets="@../css/style.css" />
+                              <Pane fx:id="pane2" prefHeight="200.0" prefWidth="200.0" styleClass="pane" stylesheets="@../css/style.css" GridPane.columnIndex="1" />
+                              <Pane fx:id="pane3" prefHeight="200.0" prefWidth="200.0" styleClass="pane" stylesheets="@../css/style.css" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
+                        <GridPane hgap="17.0" layoutX="56.0" layoutY="426.0" prefHeight="271.0" prefWidth="809.0" style="-fx-background-radius: 10;">
+                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                           </columnConstraints>
+                           <rowConstraints>
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                           </rowConstraints>
+                           <children>
+                              <Pane prefHeight="100.0" prefWidth="396.0" style="-fx-background-color: #fff; -fx-background-radius: 10;" />
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff; -fx-background-radius: 10;" GridPane.columnIndex="1" />
+                              <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #fff; -fx-background-radius: 10;" GridPane.columnIndex="2" />
+                           </children>
+                        </GridPane>
+                        <HBox alignment="CENTER_LEFT" layoutX="56.0" layoutY="23.0" prefHeight="40.0" prefWidth="459.0" spacing="15.0">
+                           <children>
+                              <Group fx:id="searchBox" layoutX="56.0">
+                                 <children>
+                                    <TextField fx:id="search" layoutY="-73.0" prefHeight="30.0" prefWidth="286.0" promptText="Searchs contacts, projects, invoices,tasks or categories" stylesheets="@../css/style.css">
+                                       <font>
+                                          <Font name="Segoe UI Semibold" size="10.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets left="25.0" />
+                                       </padding>
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                    </TextField>
+                                    <FontAwesomeIconView fill="#a6a6a6" glyphName="SEARCH" layoutX="10.0" layoutY="-54.0" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Group>
+                              <Button fx:id="createProjectBtn" mnemonicParsing="false" prefHeight="30.0" prefWidth="137.0" stylesheets="@../css/style.css" text="Add a new project">
+                                 <font>
+                                    <Font name="Segoe UI Bold" size="12.0" />
+                                 </font>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_RIGHT" layoutX="644.0" layoutY="27.0" prefHeight="45.0" prefWidth="224.0">
+                           <children>
+                              <HBox alignment="CENTER_RIGHT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="45.0" spacing="6.0" style="-fx-background-color: #FFF; -fx-background-radius: 10;">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <children>
+                                    <FontAwesomeIconView fill="#006067" glyphName="BELL_ALT" size="15" wrappingWidth="15.111083984375">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets right="5.0" />
+                                       </HBox.margin>
+                                    </FontAwesomeIconView>
+                                    <Label fx:id="user" alignment="CENTER_RIGHT" text="Samie Azubike" textFill="#006067">
+                                       <font>
+                                          <Font name="Segoe UI Bold" size="12.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Label>
+                                    <Group>
+                                       <children>
+                                          <Circle fill="#effaae" radius="13.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" />
+                                          <Label fx:id="imageSymbol" layoutX="-4.0" layoutY="-8.0" text="S" textFill="#006067">
+                                             <font>
+                                                <Font name="Segoe UI Bold" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets />
+                                       </HBox.margin>
+                                    </Group>
+                                 </children>
+                                 <padding>
+                                    <Insets left="10.0" right="10.0" />
+                                 </padding>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="myTasks" prefHeight="636.0" prefWidth="905.0" visible="false" />
+                  <AnchorPane fx:id="myProject" layoutX="-1.0" layoutY="-3.0" prefHeight="649.0" prefWidth="905.0" visible="false" />
+                  <AnchorPane fx:id="myMessage" layoutY="-2.0" prefHeight="646.0" prefWidth="905.0" visible="false" />
+                  <AnchorPane fx:id="myClient" layoutY="-2.0" prefHeight="649.0" prefWidth="905.0" visible="false" />
+                  <AnchorPane fx:id="myTeam" layoutX="-2.0" layoutY="-3.0" prefHeight="636.0" prefWidth="905.0" visible="false" />
+               </children>
+            </AnchorPane>
+         </content>
+      </ScrollPane>
+   </right>
 </BorderPane>

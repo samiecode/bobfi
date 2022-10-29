@@ -35,4 +35,112 @@
     -fx-cursor: hand;
 }
 
+.vbox{
+    -fx-background-color: #79CCD2;
+    -fx-background-radius: 12 0 0 12;
+}
+.hbox:hover{
+    -fx-background-color: #79CCD2;
+    -fx-background-radius: 4 0 0 4;
+    -fx-cursor: hand;
+}
+
+#logoutBtn{
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 30;
+}
+
+#logoutBtn:hover{
+    -fx-background-color: #79ccd2;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+.active{
+    -fx-background-color: #79CCD2;
+    -fx-background-radius: 4 0 0 4;
+}
+
+.pane{
+    -fx-background-color: #C9E7E7;
+    -fx-background-radius: 10;
+}
+
+.pane:hover{
+    -fx-background-color: #79CCD2;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+#createProjectBtn{
+    -fx-background-radius: 30;
+    -fx-background-color: #fff;
+}
+
+#createProjectBtn:hover{
+    -fx-background-color: #79ccd2;
+    -fx-text-fill: #ffffff;
+    -fx-cursor: hand;
+}
+
+.scroll-bar:horizontal, .scroll-bar:vertical{
+    -fx-background-color:transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color: none;
+    -fx-border-color: none;
+    -fx-background-radius: 0em;
+
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #ddd;
+}
+
+.scroll-bar .increment-button, scroll-bar.decrement-button {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track{
+    -fx-background-color :transparent;
+    -fx-border-color :transparent;
+    -fx-background-radius : 2.0em;
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color :transparent;
+    /*-fx-background-radius : 0.0em;*/
+    -fx-padding :0.0 10.0 0.0 0.0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow{
+    -fx-shape : " ";
+    -fx-padding :0.15em 0.0;
+}
+
+.scroll-bar:vertical:focused {
+    -fx-background-color: transparent;
+}
+
+#search{
+    -fx-background-color: #eee;
+    -fx-border-color: #ddd;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30;
+}
+#search:hover{
+    -fx-background-color: #fff;
+}
+
+#search:focused{
+    -fx-font-size: 12;
+}
 
